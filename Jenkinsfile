@@ -56,7 +56,8 @@ pipeline {
 XML
           chmod 600 settings.xml
           # To hide real passwords appearing in Jenkins logs
-          sed -e "s#<password>.*</password>#<password>***</password>#g" settings.xml | head -n 40
+        //   sed -e "s#<password>.*</password>#<password>***</password>#g" settings.xml | head -n 40
+        head -n 40
         '''
       }
     }
