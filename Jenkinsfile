@@ -79,6 +79,7 @@ XML
              -DoverWrite=true
 
           # Rename the downloaded jar for the next stage
+          ls
           mv ${ARTIFACT_ID}-*.jar app.jar
           ls -lh app.jar
         '''
