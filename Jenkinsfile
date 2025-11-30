@@ -56,8 +56,8 @@ pipeline {
 XML
           chmod 600 settings.xml
           # To hide real passwords appearing in Jenkins logs
-        //   sed -e "s#<password>.*</password>#<password>***</password>#g" settings.xml | head -n 40
-        head -n 40
+          cat settings.xml
+          sed -e "s#<password>.*</password>#<password>***</password>#g" settings.xml | head -n 40
         '''
       }
     }
@@ -96,7 +96,7 @@ XML
 
   post {
     always {
-      sh 'shred -u settings.xml 2>/dev/null || rm -f settings.xml' // we can delete the settings.xml to hide user sensetive data. shred -u = overwrite the file with random data before deleting.
+    //   sh 'shred -u settings.xml 2>/dev/null || rm -f settings.xml' // we can delete the settings.xml to hide user sensetive data. shred -u = overwrite the file with random data before deleting.
       archiveArtifacts artifacts: 'app.jar, app.log', onlyIfSuccessful: false
     }
   }
